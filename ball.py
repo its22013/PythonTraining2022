@@ -1,3 +1,6 @@
+import random
+import math
+
 
 class Ball:
     """ ボールクラス
@@ -30,7 +33,7 @@ class Ball:
     def start(self):
         # 初期位置へ移動(絶対座標)
         self.canvas.moveto(self.id, self.init_x, self.init_y)
-        self.speed = 3      # 初期スピード
+        self.speed = 3      # 移動スピード
         """ 発射角度のリストを生成(angle の処理内容)
             1 - range() で 20 - 60 のデータを作成
             2 - list() でリスト型に変換

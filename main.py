@@ -29,8 +29,23 @@ class Game:
         # ゲームの準備
         self.ball = Ball(self.canvas, "red")
 
+    def main(self):
+        """ ゲームを動かすための関数
+        必ず初期化後に呼び出す。
+        """
+        self.update()       # 更新処理の関数
+        self.tk.mainloop()  # Tk 使うときに、プログラムが一瞬で終了しないようにする。
+
+    def update(self):
+        # ボールの更新処理
+        self.ball.draw()
+
+        # 次回 update の呼び出し予約
+        self.canvas.after(1000 // 60, self.update)
+        
 
 game = Game()
+game.main()
 
 
 
