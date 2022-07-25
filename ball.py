@@ -50,6 +50,49 @@ class Ball:
         # ボールを移動させる
         self.canvas.move(self.id, self.x, self.y)
 
+        # 移動したあとの座標(左上xy,右下xy)を取得する
+        pos = self.canvas.coords(self.id)
+
+        # 左に当たった(pos[0]が越えた)かどうか
+        if pos[0] <= 0:
+            self.fix(pos[0] - 0, 0)
+
+        # 上に当たった(pos[1]が越えた)かどうか
+        if pos[1] <= 0:
+            self.fix(0, pos[1])
+
+        # 右に当たった(pos[2]が越えた)かどうか
+        if pos[2] >= self.canvas_width:
+            self.fix(pos[2] - self.canvas_width, 0)
+
+        # 下に当たった(pos[3]が越えた)かどうか
+        if pos[3] >= self.canvas_height:
+            self.fix(0, pos[3] - self.canvas_height)
+            # 本当は跳ね返らせずにゲームオーバーにする。
+            # ボールの動きも止める予定
+
+    def fix(self, diff_x, diff_y):
+        # x/y の差分を受け取って、2倍した数を逆に移動する。
+        self.canvas.move(self.id, -(diff_x * 2), -(diff_y * 2))
+
+        # 差分があったら(0でなければ)跳ね返ったとして向きを反転させる。
+        if diff_x != 0:
+            self.x = -self.x
+            
+        if diff_y != 0:
+            self.y = -self.y
+            
+
+
+
+
+
+
+
+
+
+
+
 
 
 
