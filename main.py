@@ -1,7 +1,7 @@
 from tkinter import *
 
 from ball import Ball
-
+from paddle import Paddle
 
 class Game:
     """ ゲームのメインクラス
@@ -27,7 +27,13 @@ class Game:
         self.tk.update()        # tk の状態を更新
 
         # ゲームの準備
+        self.paddle = Paddle(self.canvas, "blue")
         self.ball = Ball(self.canvas, "red")
+
+        # イベントハンドラ設定(キー入力の反映)
+        self.canvas.bind_all("<KeyPress-Left>", self.paddle.turn_left)
+        self.canvas.bind_all("<KeyPress-Right>", self.paddle.turn_right)
+
 
     def main(self):
         """ ゲームを動かすための関数
@@ -39,6 +45,8 @@ class Game:
     def update(self):
         # ボールの更新処理
         self.ball.draw()
+        # パドルの更新処理
+        self.paddle.draw()
 
         # 次回 update の呼び出し予約
         self.canvas.after(1000 // 60, self.update)
