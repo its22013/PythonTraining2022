@@ -33,7 +33,7 @@ class Game:
         # イベントハンドラ設定(キー入力の反映)
         self.canvas.bind_all("<KeyPress-Left>", self.paddle.turn_left)
         self.canvas.bind_all("<KeyPress-Right>", self.paddle.turn_right)
-
+        self.canvas.bind_all("<KeyPress-space>", self.ball.start)
 
     def main(self):
         """ ゲームを動かすための関数

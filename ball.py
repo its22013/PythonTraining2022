@@ -30,10 +30,12 @@ class Ball:
         self.x = 0
         self.y = 0
         
-        # ボール始動
-        self.start()
 
-    def start(self):
+    def start(self, evt):
+        # ボール移動中なら何もしない
+        if self.speed != 0:
+            return
+        
         # 初期位置へ移動(絶対座標)
         self.canvas.moveto(self.id, self.init_x, self.init_y)
         self.speed = 3      # 移動スピード
@@ -99,6 +101,8 @@ class Ball:
         self.x = 0
         self.y = 0
         self.speed = 0
+
+        
 
 
 
