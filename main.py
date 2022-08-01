@@ -28,7 +28,7 @@ class Game:
 
         # ゲームの準備
         self.paddle = Paddle(self.canvas, "blue")
-        self.ball = Ball(self.canvas, "red")
+        self.ball = Ball(self.canvas, "red", self.paddle)
 
         # イベントハンドラ設定(キー入力の反映)
         self.canvas.bind_all("<KeyPress-Left>", self.paddle.turn_left)
