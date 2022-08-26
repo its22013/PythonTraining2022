@@ -1,7 +1,8 @@
-from tkinter import *
+rom tkinter import *
 
 from ball import Ball
 from paddle import Paddle
+from block import Block
 
 class Game:
     """ ゲームのメインクラス
@@ -29,13 +30,8 @@ class Game:
         # ゲームの準備
         self.paddle = Paddle(self.canvas, "blue")
         self.ball = Ball(self.canvas, "red", self.paddle)
-
-        # イベントハンドラ設定(キー入力の反映)
-        self.canvas.bind_all("<KeyPress-Left>", self.paddle.turn_left)
-        self.canvas.bind_all("<KeyPress-Right>", self.paddle.turn_right)
-        self.canvas.bind_all("<KeyPress-space>", self.ball.start)
-
-    def main(self):
+        self.block = Block(canvas, x, y, "black")
+      def main(self):
         """ ゲームを動かすための関数
         必ず初期化後に呼び出す。
         """
@@ -48,6 +44,8 @@ class Game:
         # パドルの更新処理
         self.paddle.draw()
 
+        
+
         # 次回 update の呼び出し予約
         self.canvas.after(1000 // 60, self.update)
         
@@ -57,10 +55,7 @@ game.main()
 
 
 
-
-
-
-
+     
 
 
 
